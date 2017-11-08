@@ -35,7 +35,7 @@ class JsEditor extends Component {
 				<Editor ref="editor" editorState={this.state.editorState} onTab={this.onTab} onChange={this.handleEditorChange}></Editor>
 				{this.line()}
 				<div className="btn-group">
-					<button className="btn" onClick={_=>this.formmater()}>格式化</button>
+					<button className="btn" onClick={e=>this.formmater(e)}>格式化</button>
 				    <button className="btn" onClick={_=>this.copy()}>复制</button></div>
 				    <button className="btn">保存修改</button>
 				    <textarea ref="cacheCopyText" className="clips-area" type="text"></textarea>
@@ -59,19 +59,31 @@ class JsEditor extends Component {
         this.handleEditorChange(RichUtils.onTab(e, this.state.editorState, 4));
 	}
 
-	formmater() {
-		var targetText=this.state.editorState.getCurrentContent().getPlainText();
+	formmater(e) {
+		setTimeout(_=>{
+			this.handleEditorChange(EditorState.moveFocusToEnd(this.state.editorState));
+			this.refs.editor.focus();
+			var targetText=beautify(this.state.editorState.getCurrentContent().getPlainText());
 
-		var newBlocks=beautify(targetText).split(/\n/).map(function(text){
-			return {
-				type:'code-block',
-				text:text
-			}
+			var newBlocks=targetText.split(/\n/).map(function(text){
+				return {
+					type:'code-block',
+					text:text
+				}
+			})
+			
+			var newContent=convertFromRaw({
+				entityMap:{},
+				blocks:newBlocks
+			})
+
+			this.handleEditorChange(EditorState.push(
+				this.state.editorState,
+				newContent
+			));
+
+			this.handleEditorChange(EditorState.moveFocusToEnd(this.state.editorState));
 		})
-		this.setState({editorState:EditorState.createWithContent(convertFromRaw({
-			entityMap:{},
-			blocks:newBlocks
-		}),decorator)})
 	}
 
 	copy(){

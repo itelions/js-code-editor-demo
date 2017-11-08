@@ -17,7 +17,8 @@
     margin: 0;
     opacity: 0;
 }
-.editor pre.public-DraftStyleDefault-pre{
+.editor .DraftEditor-root{
+    position: relative;
     padding-left: 40px;
 }
 ul,li{
