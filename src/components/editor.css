@@ -1,0 +1,84 @@
+.editor{
+    background: #1e1e1e;
+    color: #d4d4ce;
+    font-family: 'Microsoft Yahei';
+    line-height: 24px;
+    font-size: 14px;
+    text-align: left;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding-bottom: 5px;
+}
+.clips-area{
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+.editor pre.public-DraftStyleDefault-pre{
+    padding-left: 40px;
+}
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.editor .line{
+    cursor: default;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    border-right: 1px solid #666;
+    border-bottom: 1px solid #666;
+    top: 0;
+    width: 30px;
+}
+.editor .line li{
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+    width: 30px;
+    color: #aaa;
+    float: left;
+    line-height: 24px;
+}
+.editor pre{
+    margin: 0;
+}
+.btn-group{
+    border-top: 1px solid #666;
+
+}
+.btn{
+    cursor: pointer;
+    float: left;
+    margin: 0 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    background: #fff;
+    border: 0;
+    font-size: 14px;
+    font-family: 'Microsoft Yahei';
+    padding: 5px 10px;
+}
+.public-DraftStyleDefault-pre{
+    line-height: 24px;
+    color:#9cdcfe;
+}
+.prism-token.keyword{
+    color:#4998d6;
+}
+.prism-token.operator{
+    color:#d4d4d4
+}
+.prism-token.punctuation{
+    color:#fff;
+}
+.prism-token.string{
+    color:#c8773f;
+}
+.prism-token.function{
+    color:#dcdcaa;
+}
